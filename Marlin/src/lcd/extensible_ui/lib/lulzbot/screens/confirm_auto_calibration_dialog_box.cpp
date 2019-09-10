@@ -22,7 +22,7 @@
 
 #include "../config.h"
 
-#if BOTH(LULZBOT_TOUCH_UI, CALIBRATION_GCODE)
+#if ENABLED(LULZBOT_TOUCH_UI) && ENABLED(CALIBRATION_GCODE)
 
 #include "screens.h"
 

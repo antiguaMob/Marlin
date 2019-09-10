@@ -22,7 +22,7 @@
 
 #include "../config.h"
 
-#if BOTH(LULZBOT_TOUCH_UI, FILAMENT_RUNOUT_SENSOR)
+#if ENABLED(LULZBOT_TOUCH_UI) && ENABLED(FILAMENT_RUNOUT_SENSOR)
 
 #include "screens.h"
 

@@ -46,7 +46,6 @@
 // bg         Bulgarian
 // ca         Catalan
 // cz         Czech
-// da         Danish
 // de         German
 // el         Greek
 // el-gr      Greek (Greece)

@@ -30,11 +30,11 @@
 #include "../shared/math_32bit.h"
 #include "../shared/HAL_SPI.h"
 
-#include "fastio.h"
-#include "watchdog.h"
+#include "fastio_ESP32.h"
+#include "watchdog_ESP32.h"
 #include "i2s.h"
 
-#include "timers.h"
+#include "HAL_timers_ESP32.h"
 
 #include "WebSocketSerial.h"
 #include "FlushableHardwareSerial.h"

@@ -220,8 +220,6 @@ void plan_arc(
     raw[l_axis] = start_L;
   #endif
 
-  apply_motion_limits(raw);
-
   #if HAS_LEVELING && !PLANNER_LEVELING
     planner.apply_leveling(raw);
   #endif

@@ -45,7 +45,7 @@
 
 #include "HAL/shared/Delay.h"
 
-#include "module/stepper/indirection.h"
+#include "module/stepper_indirection.h"
 
 #ifdef ARDUINO
   #include <pins_arduino.h>
@@ -87,10 +87,6 @@
 
 #if ENABLED(BLTOUCH)
   #include "feature/bltouch.h"
-#endif
-
-#if ENABLED(POLL_JOG)
-  #include "feature/joystick.h"
 #endif
 
 #if HAS_SERVOS
@@ -743,10 +739,6 @@ void idle(
   #if ENABLED(PRUSA_MMU2)
     mmu2.mmu_loop();
   #endif
-
-  #if ENABLED(POLL_JOG)
-    joystick.inject_jog_moves();
-  #endif
 }
 
 /**
@@ -1201,6 +1193,7 @@ void loop() {
 
     #endif // SDSUPPORT
 
+    if (queue.length < BUFSIZE) queue.get_available_commands();
     queue.advance();
     endstops.event_handler();
   }

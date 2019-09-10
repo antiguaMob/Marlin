@@ -33,39 +33,30 @@
 #include "../shared/math_32bit.h"
 #include "../shared/HAL_SPI.h"
 
-#include "fastio.h"
-#include "watchdog.h"
+#include "fastio_STM32F1.h"
+#include "watchdog_STM32F1.h"
 
-#include "timers.h"
+#include "HAL_timers_STM32F1.h"
 
 #include <stdint.h>
 #include <util/atomic.h>
 
 #include "../../inc/MarlinConfigPre.h"
-#include "msc_sd.h"
 
 // ------------------------
 // Defines
 // ------------------------
 
 #ifdef SERIAL_USB
-  #ifndef USE_USB_COMPOSITE
-    #define UsbSerial Serial
-  #else
-    #define UsbSerial MarlinCompositeSerial
-  #endif
+  #define UsbSerial Serial
   #define MSerial1  Serial1
   #define MSerial2  Serial2
   #define MSerial3  Serial3
   #define MSerial4  Serial4
   #define MSerial5  Serial5
 #else
-  #ifndef USE_USB_COMPOSITE
-    extern USBSerial SerialUSB;
-    #define UsbSerial SerialUSB
-  #else
-    #define UsbSerial MarlinCompositeSerial
-  #endif
+  extern USBSerial SerialUSB;
+  #define UsbSerial SerialUSB
   #define MSerial1  Serial
   #define MSerial2  Serial1
   #define MSerial3  Serial2
@@ -120,8 +111,6 @@
 
 // Set interrupt grouping for this MCU
 void HAL_init(void);
-#define HAL_IDLETASK 1
-void HAL_idletask(void);
 
 /**
  * TODO: review this to return 1 for pins that are not analog input
@@ -218,6 +207,17 @@ static int freeMemory() {
 }
 
 #pragma GCC diagnostic pop
+
+//
+// SPI: Extended functions which take a channel number (hardware SPI only)
+//
+
+// Write single byte to specified SPI channel
+void spiSend(uint32_t chan, byte b);
+// Write buffer to specified SPI channel
+void spiSend(uint32_t chan, const uint8_t* buf, size_t n);
+// Read single byte from specified SPI channel
+uint8_t spiRec(uint32_t chan);
 
 //
 // EEPROM

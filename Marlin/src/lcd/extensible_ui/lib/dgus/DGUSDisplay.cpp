@@ -289,11 +289,11 @@ void DGUSScreenVariableHandler::DGUSLCD_SendStringToDisplayPGM(DGUS_VP_Variable 
 
     // Don't let the user in the dark why there is no reaction.
     if (!ExtUI::isMediaInserted()) {
-       setstatusmessagePGM(PSTR(MSG_NO_MEDIA));
+       setstatusmessagePGM(PSTR("No SD Card"));
        return;
     }
     if (card.flag.abort_sd_printing) {
-       setstatusmessagePGM(PSTR(MSG_MEDIA_ABORTING));
+       setstatusmessagePGM(PSTR("Aborting..."));
        return;
     }
   }

@@ -77,7 +77,7 @@
 
 #if HAS_TRINAMIC
   #include "../../feature/tmc_util.h"
-  #include "../../module/stepper/indirection.h"
+  #include "../../module/stepper_indirection.h"
 #endif
 
 #include "ui_api.h"

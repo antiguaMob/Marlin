@@ -25,7 +25,7 @@
 #include "../compat.h"
 #include "../basic/ftdi_basic.h"
 
-#ifndef __MARLIN_FIRMWARE__
+#if !defined(__MARLIN_FIRMWARE__)
   #define FTDI_EXTENDED
 #endif
 
